@@ -1,24 +1,31 @@
-
-
 type SquareProps = {
-    value: string|null;
-    onSquareClick: () => void;
+  value: string | null;
+  onSquareClick: () => void;
+  size: "small" | "large";
 };
 
-const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
+const Square: React.FC<SquareProps> = ({ value, onSquareClick, size }) => {
   return (
     <button
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 0,
-        backgroundColor: '#fff',
-        border: '1px solid #999',
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+
+        backgroundColor:
+          value === null
+            ? "white"
+            : value?.toLowerCase() === "o"
+            ? "green"
+            : "red",
+        /*  border: "1px solid #999",
         outline: 0,
-        borderRadius: 0,
-        fontSize: '1rem',
-        fontWeight: 'bold',
+        borderRadius: 0, */
+
+        fontSize: size === "large" ? "8rem" : "0.5rem",
+        fontWeight: "bold",
+        color: "white",
+        border: "1px solid #ddd",
       }}
       onClick={onSquareClick}
     >
@@ -27,4 +34,4 @@ const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
   );
 };
 
-export default Square
+export default Square;
